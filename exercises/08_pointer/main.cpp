@@ -4,8 +4,15 @@
 bool is_fibonacci(int *ptr, int len, int stride) {
     ASSERT(len >= 3, "`len` should be at least 3");
     // TODO: 编写代码判断从 ptr 开始，每 stride 个元素取 1 个元素，组成长度为 n 的数列是否满足
-    // arr[i + 2] = arr[i] + arr[i + 1]
-    return true;
+
+    // 遍历数列的每个元素，检查斐波那契关系
+    for (int i = 0; i < len - 2; ++i) {
+        // 使用stride间隔取元素
+        if (ptr[i * stride] + ptr[(i + 1) * stride] != ptr[(i + 2) * stride]) {
+            return false;  // 如果不满足斐波那契关系，返回false
+        }
+    }
+    return true;  // 如果整个数列都满足斐波那契关系，返回true   
 }
 
 // ---- 不要修改以下代码 ----
